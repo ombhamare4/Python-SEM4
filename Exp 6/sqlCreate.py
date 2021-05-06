@@ -1,3 +1,5 @@
+#Om Ghanshyam Bhamare Div: A Roll No:3
+#Exp 6
 import mysql.connector #step1
 mydb=mysql.connector.connect(host="localhost",user="root",password="EU1192003",database="leafShinobi")
 
