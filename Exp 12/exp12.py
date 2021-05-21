@@ -1,5 +1,8 @@
+#Om Ghanshyam Bhamare SE A 3
+#Experiemnt 3
+#A program to display the number of employees in all
+#age group using Data Series and Data Frames using Pandas.
 import pandas as pd
-
 data = {'Name':['Naruto', 'Luffy', 'Zero2', 'Sayu','Kira','Hinata'],
         'Age':[15, 21, 19, 18,28,24]}
 df = pd.DataFrame(data)

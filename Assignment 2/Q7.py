@@ -2,25 +2,24 @@
 #Assignmet 2
 #A Python program where two threads are acting on the same method to allot a berth for the passenger
 import threading
+from threading import Thread, Lock
+import time
+lock = threading.Lock()
 
-trd = threading.Thread()
+def allotment(lock):
+  while True:
+    if lock.acquire(blocking=False) is True:
+      break
+    else:
+      print("Not Available")
+      time.sleep(0.1)
+    lock.release()
+    print("Allotment Vacant")
 
-def allotment(trd):
-    while True:
-        if trd.acquire(blocking=False) is True:
-            break
-        else:
-            print("Not available")
-            # time.sleep(0.1)
-        print("Seat Allowed")
-        trd.release()
-        print("Allotment Vacant")
+p1=Thread(target=allotment,args=(lock,))
+p2=Thread(target=allotment,args=(lock,))
 
-
-t1=Thread(target=allotment,args=(trd,))
-t2=Thread(target=allotment,args=(trd,))
-
-t1.start()
-t2.start()
-t1.join()
-t2.join()
+p1.start()
+p2.start()
+p1.join()
+p2.join()
